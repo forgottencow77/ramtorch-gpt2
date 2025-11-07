@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ramgpt"
+version = "0.1.0"
+description = "Training a ~1B GPT-2 style model with RamTorch-assisted CPU↔GPU offload"
+readme = "README.ja.md"
+authors = [{name = "Codex"}]
+requires-python = ">=3.12"
+dependencies = []
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

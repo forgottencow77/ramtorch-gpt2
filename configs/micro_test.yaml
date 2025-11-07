@@ -1,0 +1,51 @@
+data:
+  dataset_name: wikitext
+  dataset_config: wikitext-2-raw-v1
+  text_column: text
+  train_split: train
+  eval_split: validation
+  seq_len: 128
+  micro_batch_size: 2
+  gradient_accumulation: 1
+  streaming: true
+  buffer_size: 512
+  tokenizer_name: gpt2
+
+model:
+  vocab_size: 50257
+  n_layer: 2
+  n_head: 8
+  n_embd: 512
+  max_position_embeddings: 128
+  resid_pdrop: 0.05
+  embd_pdrop: 0.05
+  attn_pdrop: 0.05
+  gradient_checkpointing: false
+  ram_offload_device: cuda
+  dtype: float32
+
+optim:
+  learning_rate: 0.001
+  weight_decay: 0.01
+  grad_clip: 1.0
+
+scheduler:
+  warmup_steps: 10
+  max_steps: 50
+  min_lr_ratio: 0.5
+
+checkpoint:
+  output_dir: micro_ckpts
+  save_interval_steps: 25
+  keep_last_n: 1
+
+logging:
+  log_interval: 1
+  eval_interval: 10
+  use_wandb: false
+
+seed: 1234
+device: cpu
+compile: false
+bf16: false
+fp16: false

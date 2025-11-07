@@ -1,0 +1,73 @@
+data:
+  dataset_name: hotchpotch/fineweb-2-edu-japanese
+  dataset_config: sample_10BT
+  dataset_path: null
+  text_column: text
+  train_split: train
+  eval_split: test
+  max_train_samples: 5000000
+  max_eval_samples: 50000
+  seq_len: 1024
+  micro_batch_size: 1
+  gradient_accumulation: 96
+  num_workers: 2
+  streaming: true
+  buffer_size: 16384
+  tokenizer_name: gpt2
+  tokenizer_vocab_size: 50257
+  tokenizer_pad_to_multiple_of: 128
+  pack_sequences: true
+
+model:
+  vocab_size: 50257
+  n_layer: 36
+  n_head: 24
+  n_embd: 1536
+  max_position_embeddings: 1024
+  rotary_pct: null
+  activation_fn: gelu
+  resid_pdrop: 0.02
+  embd_pdrop: 0.02
+  attn_pdrop: 0.02
+  layer_norm_epsilon: 1.0e-5
+  use_flash_attn: true
+  gradient_checkpointing: true
+  ram_offload_device: cuda
+  ram_cpu_buffer: 4
+  dtype: float16
+
+optim:
+  learning_rate: 0.0002
+  weight_decay: 0.1
+  beta1: 0.9
+  beta2: 0.95
+  eps: 1.0e-8
+  grad_clip: 1.0
+
+scheduler:
+  warmup_steps: 6000
+  max_steps: 300000
+  min_lr_ratio: 0.1
+
+checkpoint:
+  output_dir: checkpoints
+  save_interval_steps: 2000
+  keep_last_n: 8
+  resume_path: null
+  hf_repo_id: null
+  hf_token: null
+  push_to_hub_interval: 10000
+
+logging:
+  log_interval: 20
+  eval_interval: 5000
+  use_wandb: true
+  wandb_project: ramgpt-gpt2-1b
+  wandb_run_name: null
+  wandb_watch: false
+
+seed: 1337
+device: cuda
+compile: false
+bf16: false
+fp16: true

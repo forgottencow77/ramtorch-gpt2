@@ -1,0 +1,16 @@
+# Install torch separately with the right CUDA wheel, e.g.
+# pip install torch==2.4.1+cu124 --index-url https://download.pytorch.org/whl/cu124
+# Remove the line above if you already have torch pre-installed.
+torch==2.4.1
+ramtorch>=0.2.1
+transformers>=4.46.3
+datasets>=3.1.0
+tokenizers>=0.20.0
+tiktoken>=0.7.0
+wandb>=0.17.9
+huggingface_hub>=0.26.2
+accelerate>=0.34.2
+safetensors>=0.4.5
+pyyaml>=6.0.2
+tqdm>=4.66.5
+numpy>=1.26.4
